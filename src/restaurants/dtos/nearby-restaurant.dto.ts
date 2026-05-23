@@ -1,16 +1,13 @@
-import { IsNumber, Min, Max } from 'class-validator';
+import { IsNumber, Min, Max, IsLongitude, IsLatitude } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class NearbyRestaurantDto {
     @Type(() => Number)
-    @IsNumber()
-    @Min(-90)
-    @Max(90)
-    latitude!: number;
+    @IsLongitude()
+    longitude!: number;
 
     @Type(() => Number)
-    @IsNumber()
-    @Min(-180)
-    @Max(180)
-    longitude!: number;
+    @IsLatitude()
+    latitude!: number;
+
 }

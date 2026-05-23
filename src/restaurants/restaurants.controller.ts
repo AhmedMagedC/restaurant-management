@@ -9,7 +9,6 @@ export class RestaurantsController {
     constructor(private readonly restaurantsService: RestaurantsService) { }
 
     @Post()
-    @UsePipes(new ValidationPipe({ whitelist: true }))
     async create(@Body() dto: CreateRestaurantDto) {
         return this.restaurantsService.create(dto);
     }

@@ -1,4 +1,4 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export type RestaurantDocument = Restaurant & Document;
@@ -26,13 +26,20 @@ export class Restaurant {
     unique_name!: string;
 
     // GeoJSON Point format
-    @Prop({
-        type: {
-            type: { type: String, enum: ['Point'], required: true },
-            coordinates: { type: [Number], required: true },
-        },
-        required: true,
-    })
+    @Prop(
+        raw({
+            type: {
+                type: String,
+                enum: ['Point'],
+                default: 'Point',
+                required: true,
+            },
+            coordinates: {
+                type: [Number],
+                required: true,
+            },
+        }),
+    )
     location!: {
         type: 'Point';
         coordinates: [number, number]; // [lng, lat]
