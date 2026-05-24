@@ -10,6 +10,7 @@ export class Restaurant {
         type: {
             en: { type: String, required: true, trim: true },
             ar: { type: String, required: true, trim: true },
+            _id: false
         },
     })
     name!: {

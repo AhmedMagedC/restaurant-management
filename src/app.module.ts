@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { UsersModule } from './users/users.module';
 import databaseConfig from './config/database.config'
 
 @Module({
@@ -19,6 +20,7 @@ import databaseConfig from './config/database.config'
         }),
 
         RestaurantsModule,
+        UsersModule,
     ],
 })
 export class AppModule { }
