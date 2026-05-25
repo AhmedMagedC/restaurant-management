@@ -3,6 +3,8 @@ import { Document, Types } from 'mongoose';
 
 export type UserRestaurantDocument = UserRestaurant & Document;
 
+// for the many-to-many relationship , a user can follow many restaurants
+// and a restaurant can be followed by many users
 @Schema({ timestamps: false })
 export class UserRestaurant {
     @Prop({ required: true, type: Types.ObjectId, ref: 'User' })

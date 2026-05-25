@@ -3,6 +3,8 @@ import { Document, Types } from 'mongoose';
 
 export type RestaurantCuisineDocument = RestaurantCuisine & Document;
 
+// for the many-to-many relationship , a restaurant can have a list of cuisines (1 to 3)
+// and a cuisine can exist in many restaurants
 @Schema({ timestamps: false })
 export class RestaurantCuisine {
     @Prop({
@@ -22,6 +24,7 @@ export class RestaurantCuisine {
 
 export const RestaurantCuisineSchema = SchemaFactory.createForClass(RestaurantCuisine);
 
+// a restaurant cant have the same cuisine twice
 RestaurantCuisineSchema.index(
     { restaurant_id: 1, cuisine_id: 1 },
     { unique: true },

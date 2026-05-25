@@ -3,6 +3,8 @@ import { Document, Types } from 'mongoose';
 
 export type UserCuisineDocument = UserCuisine & Document;
 
+// for the many-to-many relationship , a user can have a list of favoiurite cuisines
+// and a cuisine can be favored by many users
 @Schema({ timestamps: false })
 export class UserCuisine {
     @Prop({ required: true, type: Types.ObjectId, ref: 'User' })
